@@ -113,6 +113,10 @@ public class MessageActivity extends ActionBarActivity implements Runnable {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_refresh) {
             LoadMessageTask task = new LoadMessageTask();
+
+            handler.removeCallbacks(this);
+            handler.postDelayed(this, 30000);
+
             task.execute();
             return true;
         }
