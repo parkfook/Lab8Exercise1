@@ -144,22 +144,22 @@ public class MessageActivity extends ActionBarActivity implements Runnable {
                         buffer.append(line);
                     }
 
-                    Log.e("LoadMessageTask", buffer.toString());
+                Log.e("LoadMessageTask", buffer.toString());
 
 
 
                     JSONObject json = new JSONObject(buffer.toString());
                     JSONArray Msg = json.getJSONArray("msg");
-                    int MsgL;
+                    int MsgLength;
                     int i ;
-                    JSONObject eachMsg;
-                    MsgL = Msg.length();
-                    for(i=0 ; i<MsgL ; i++)
+                    JSONObject onemsg;
+                    MsgLength = Msg.length();
+                    for(i=0 ; i<MsgLength ; i++)
                     {
-                        eachMsg = Msg.getJSONObject(i);
+                        onemsg = Msg.getJSONObject(i);
                         Map<String, String> item = new HashMap<String, String>();
-                        item.put("user", eachMsg.getString("user"));
-                        item.put("message", eachMsg.getString("message"));
+                        item.put("user", onemsg.getString("user"));
+                        item.put("message", onemsg.getString("message"));
                         data.add(0, item);
                     }
                     timestamp = json.getInt("timestamp");
